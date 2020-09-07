@@ -1,0 +1,23 @@
+{% extends "tech/layout.html" %}
+
+{% block title %} 
+データ選択
+{% endblock %}
+
+{% block style %} 
+{% endblock %}
+
+{% block body %}
+
+<div id="data-upload">
+    <h1>データを選択してください</h1>
+    <form action ="{% url 'index'  %}" enctype="multipart/form-data"  method="post" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">選択</button>
+    
+    </form>
+</div>
+
+
+{% endblock %}

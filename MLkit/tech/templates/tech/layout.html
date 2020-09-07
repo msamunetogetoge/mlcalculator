@@ -2,9 +2,20 @@
 
 <html lang="ja">
     <head>
-        <title>手法選択</title>
+        <title>
+            {% block title %} 
+            {% endblock %}
+        </title>
+        <style>
+            {% block style %} 
+            {% endblock %}
+        </style>
     </head>
         <body>
+            <a href = "{% url 'model'  %}" >モデル選択</a>
+            <a href = "{% url 'datas'  %}" >データ選択</a>
+            <a href = "{% url 'calculation'  %}" >計算</a>
+
             {% block body %}
             {% endblock %}
         </body>

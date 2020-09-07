@@ -1,10 +1,17 @@
 {% extends "tech/layout.html" %}
 
+{% block title %} 
+モデル選択
+{% endblock %}
+
+{% block style %} 
+{% endblock %}
+
 {% block body %}
 
 <h1>モデルを選択してください</h1>
 
-<form action ="{% url 'result'  %}" method="post">
+<form action ="{% url 'index'  %}" method="post">
     {% csrf_token %}
     <select name="model">
         {% for model in models %}

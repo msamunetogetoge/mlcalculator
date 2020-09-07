@@ -8,3 +8,11 @@ class MlModel(models.Model):
 
     def __str__(self):
         return f"{self.mdl} :({self.code})"
+
+class selectedModel(models.Model):
+    mdl = models.CharField(max_length=64)
+    code = models.CharField(max_length=64)
+
+class selectedData(models.Model):
+    data=""
+    

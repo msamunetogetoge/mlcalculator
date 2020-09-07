@@ -1,29 +1,67 @@
 {% extends "tech/layout.html" %}
 
+{% block title %} 
+データ・モデル選択
+{% endblock %}
+
+{% block style %} 
+{% endblock %}
+
 {% block body %}
-
-<h1>データをアップロードしてください</h1>
-
-<form  enctype="multipart/form-data"  method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">選択</button>
-
-    </form>
-
-<h1>モデルを選択してください</h1>
-
-<form method="post">
-    {% csrf_token %}
-    <select name="model">
-        {% for model in models %}
-            <option value="{{ model.code }}">{{model.mdl}}</option>
-        {% endfor %}
-
-    </select>
-    <input type="submit">
-
-
-
+<h1 id="opening">データをアップロードし、使うモデルを選択してください。</h1>
 
 {% endblock %}
+
+<!- <!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        <title>手法選択</title>
+        <style>
+            div {
+                display: none;
+            }
+        </style>
+
+    </head>
+
+
+        <body>
+            <h1 id="opening">データをアップロードし、使うモデルを選択してください。</h1>
+
+
+            <div id="data-upload">
+                <h1>データを選択してください</h1>
+                <form  enctype="multipart/form-data"  method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">選択</button>
+                
+                </form>
+            </div>
+            <div id="select-model">
+                <h1>モデルを選択してください</h1>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <select name="model">
+                        {% for model in models %}
+                            <option value="{{ model.code }}">{{model.mdl}}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit">
+                </form>
+            </div>
+            <div id="calculate">
+                <h1>計算中です</h1>
+                
+            </div>
+        </body>
+    
+</html> ->
+
+
+
+
+
+
