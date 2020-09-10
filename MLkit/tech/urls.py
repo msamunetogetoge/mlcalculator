@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 from django.urls import path
 
 from . import views
@@ -10,3 +13,6 @@ urlpatterns=[
     path("calculation", views.calculation, name="calculation"),
 
 ]
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

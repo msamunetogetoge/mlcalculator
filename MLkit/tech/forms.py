@@ -1,4 +1,14 @@
-from django import forms
+import csv
+import io
 
-class UploadFileForm(forms.Form):
-    data = forms.FileField()
+from django import forms
+from django.core.validators import FileExtensionValidator
+
+from .models import selectedData
+
+class UploadFileForm(forms.ModelForm):
+
+    class Meta:
+        model  = selectedData 
+        fields = ('title', 'upload' )
+        

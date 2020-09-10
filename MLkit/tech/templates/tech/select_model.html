@@ -11,9 +11,9 @@
 
 <h1>モデルを選択してください</h1>
 
-<form action ="{% url 'index'  %}" method="post">
+<form action ="{% url 'model' %}" method="post">
     {% csrf_token %}
-    <select name="model">
+    <select name="selected_model">
         {% for model in models %}
             <option value="{{ model.code }}">{{model.mdl}}</option>
         {% endfor %}

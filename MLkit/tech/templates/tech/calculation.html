@@ -1,7 +1,7 @@
 {% extends "tech/layout.html" %}
 
 {% block title %} 
-計算確認
+条件確認
 {% endblock %}
 
 {% block style %} 
@@ -9,16 +9,18 @@
 
 {% block body %}
 
-<div >
+
     <h1>以下の条件で計算しますか？</h1>
-    <form action ="{% url 'result'  %}" enctype="multipart/form-data"  method="post" >
+    <form action ="{% url 'calculation'  %}"   method="post" >
         {% csrf_token %}
-        <div>データの名前</div>
-        <div>使うモデルの名前</div>
+        <ul>
+            <li>使うデータ: {{data.title }}</li>
+            <li>使う手法: {{model.mdl }}</li>
+        </ul>
         <button type="submit">計算</button>
     
     </form>
-</div>
+
 
 
 {% endblock %}
