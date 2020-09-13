@@ -7,15 +7,28 @@
             {% endblock %}
         </title>
         <style>
+            h1{
+                text-align: center;
+                
+            }
+            #links{
+                text-align: center;
+                
+            }
+            form{
+                text-align: center;
+                
+            }
             {% block style %} 
             {% endblock %}
         </style>
     </head>
-        <body>
+        <body >
+            <div id="links">  
             <a href = "{% url 'model' %}" >モデル選択</a>
             <a href = "{% url 'datas'  %}" >データ選択</a>
             <a href = "{% url 'calculation'  %}" >計算</a>
-
+            </div>
             {% block body %}
             {% endblock %}
         </body>

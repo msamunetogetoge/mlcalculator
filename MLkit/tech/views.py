@@ -15,10 +15,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 def index(request):
-    dataform           = UploadFileForm()
-    return render(request, "tech/index.html",{
-            "form":dataform,
-            })
+    return render(request, "tech/index.html",)
 
 
 
@@ -72,7 +69,7 @@ def calculation(request):
             })
             
     else:
-        return render(request, "tech/index.html")
+        return render(request, "tech/empty.html")
 
 def get_result(request):
     return render(request, "tech/get_result.html",{
