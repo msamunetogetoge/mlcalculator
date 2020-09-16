@@ -8,8 +8,24 @@
 {% endblock %}
 
 {% block body %}
-<h1 id="opening">データをアップロードし、使うモデルを選択してください。</h1>
+<h1>簡単機械学習計算機</h1>
+<h1>使用するモデルを選択してください</h1>
 
+<form action ="{% url 'model' %}" method="post">
+    {% csrf_token %}
+    <select name="selected_model">
+        {% for model in models %}
+            <option value="{{ model.code }}">{{model.mdl}}</option>
+        {% endfor %}
+
+    </select>
+    <input type="submit">
+</form>
+
+<form action ="{% url 'help' %} ">
+    <button> 使い方</button>
+
+</form>
 {% endblock %}
 
 

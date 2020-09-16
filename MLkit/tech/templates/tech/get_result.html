@@ -7,6 +7,7 @@
 {% block style %} 
 #loss{
     text-align: center;
+
 }
 {% endblock %}
 
@@ -14,8 +15,17 @@
 
 <h1>計算結果です</h1>
 <div id="loss">
-    loss function :{{results.title}} <br>
-    loss value    :{{results.loss }}  
+    <table>
+    <tr>
+        <td>loss function </td>  <td>{{results.title}}</td>
+    </tr>
+    <tr>
+        <td>train loss value </td> <td>{{results.loss_train }}</td>
+    </tr>
+    <tr>
+        <td>test loss value</td>  <td>{{results.loss_test}}</td>
+    </tr>
+    </table>
 </div>
 <br>
 <div >

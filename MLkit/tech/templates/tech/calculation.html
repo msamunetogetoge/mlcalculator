@@ -5,27 +5,38 @@
 {% endblock %}
 
 {% block style %} 
-    #check{
-        display: flex;
-        justify-content: center;
-    }
+    
 {% endblock %}
 
 {% block body %}
 
 
-    <h1>以下の条件で計算しますか？</h1>
-    <div id="check">
-    <ul> 
-        <li>使うデータ: {{data.title }}</li>
-        <li>使う手法: {{model.mdl }}</li>
-    </ul>
-    </div>
-    <form action ="{% url 'calculation'  %}"   method="post" >
-        {% csrf_token %}
-        <button type="submit">計算</button>
-    
-    </form>
+<h1>以下の条件で計算しますか？</h1>
+<div id="centered_contents">
+<ul> 
+    <li>使うデータ: {{data.title }}</li>
+    <li>使う手法: {{model.mdl }}</li>
+</ul>
+
+</div>
+<div >
+    <table id="buttons">
+        <tr>
+            <td>
+            <form action ="{% url 'calculation'  %}"   method="post" >
+                {% csrf_token %}
+                <button type="submit">計算</button>
+            </form>
+            </td>
+            <td>
+            <form action="{% url 'datas' %}">
+                <button>戻る</button>
+            </form>
+            </td>
+        </tr>
+    </table>
+</div>
+
 
 
 

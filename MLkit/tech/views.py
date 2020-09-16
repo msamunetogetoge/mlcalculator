@@ -16,19 +16,21 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 def index(request):
-    return render(request, "tech/index.html",)
+    return render(request, "tech/index.html",{
+        "models":MlModel.objects.all()
+    })
 
 
 
 def select_model(request):
-    if request.method =="POST":
+    if request.method  =="POST":
         code           = request.POST["selected_model"]
         model          = MlModel.objects.get(code=code)
         selected_model = selectedModel(code=model.code, mdl=model.mdl)
         selected_model.save()
-        return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("datas"))
     else:
-        return render(request, "tech/select_model.html" ,{
+        return render(request, "tech/index.html" ,{
             "models":MlModel.objects.all()
         })
     
@@ -40,7 +42,7 @@ def select_data(request):
         if data.is_valid():
             #data is save to /media
             data.save()
-        return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("calculation"))
     else:
         dataform      = UploadFileForm()
         return render(request, "tech/select_data.html",{
@@ -74,4 +76,19 @@ def get_result(request):
         "results":results.objects.last()
     })
 
+def help(request):
+    """
+    help ページからモデルが選ばれていたら、そのモデルの説明ページへ飛ばす
+    ブログ記事をコピペする？
+    """
+    if request.method =="POST":
+        content       = request.POST["help_content"]
+        #return render(request, "tech/"+content+".html")
+        return render(request, "tech/index.html")
+
+        
     
+    else:
+        return render(request, "tech/help.html",{
+            "models":MlModel.objects.all(),
+        })

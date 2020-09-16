@@ -5,18 +5,27 @@
 {% endblock %}
 
 {% block style %} 
+
 {% endblock %}
 
 {% block body %}
 
-<div id="data-upload">
+<div >
     <h1>データを選択してください</h1>
-    <form action ="{% url 'datas'  %}" enctype="multipart/form-data"  method="post" >
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">選択</button>
-    
-    </form>
+</div>
+<div>
+    <table >
+        <tr>
+            <form action ="{% url 'datas'  %}" enctype="multipart/form-data"  method="post" >
+                {% csrf_token %}
+                <td>{{ form.as_p }}</td>
+            <td><button type="submit">選択</button> </td>
+            </form>
+            <form action="{% url 'index' %}">
+                <td><button>戻る</button></td>
+            </form>
+        </tr>
+    </table>
 </div>
 
 

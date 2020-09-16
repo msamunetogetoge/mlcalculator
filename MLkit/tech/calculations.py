@@ -18,23 +18,26 @@ class Regression():
     """
 
     def __init__(self, data):
-        data         = pd.read_csv(data).dropna()
-        self.columns =  data.columns
-        self.y       = data.iloc[:,0]
-        self.X       = data.drop(columns=self.columns[0] )
-        self.random  = 1
+        data              = pd.read_csv(data).dropna()
+        self.columns      = data.columns
+        self.y            = data.iloc[:,0]
+        self.X            = data.drop(columns=self.columns[0] )
+        self.random       = 1
 
         self.X_train, \
         self.X_test,  \
         self.y_train, \
-        self.y_test = train_test_split(self.X, self.y, test_size=0.3, random_state=self.random )
+        self.y_test       = train_test_split(self.X, self.y, test_size=0.3, random_state=self.random )
 
     def learning(self):
-        reg         = LinearRegression().fit(self.X_train, self.y_train)
-        pred        = reg.predict(self.X_test)
-        score       = r2_score(self.y_test ,pred)
-        round_score = round(score, 2 )
-        R           = results(title="R^2 score", loss=str(round_score) )
+        reg               = LinearRegression().fit(self.X_train, self.y_train)
+        train_pred        = reg.predict(self.X_train)
+        pred              = reg.predict(self.X_test)
+        train_score       = r2_score(self.y_train ,train_pred)
+        round_train_score = round(train_score, 2 )
+        test_score        = r2_score(self.y_test ,pred)
+        round_test_score  = round(test_score, 2 )
+        R                 = results(title="R^2 score", loss_train=str(round_train_score),loss_test=str(round_test_score) )
         R.save()
         #return f"R^2 スコアは、 {round_score} です。"
         
@@ -51,23 +54,26 @@ class Logistic():
     """
 
     def __init__(self, data):
-        data         = pd.read_csv(data).dropna()
-        self.columns =  data.columns
-        self.y       = data.iloc[:,0]
-        self.y       = self.y.factorize()[0]
-        self.X       = data.drop(columns=self.columns[0] )
-        self.random  = 1
+        data              = pd.read_csv(data).dropna()
+        self.columns      = data.columns
+        self.y            = data.iloc[:,0]
+        self.y            = self.y.factorize()[0]
+        self.X            = data.drop(columns=self.columns[0] )
+        self.random       = 1
 
         self.X_train, \
         self.X_test,  \
         self.y_train, \
-        self.y_test = train_test_split(self.X, self.y, test_size=0.3, random_state=self.random )
+        self.y_test       = train_test_split(self.X, self.y, test_size=0.3, random_state=self.random )
 
     def learning(self):
-        reg         = LogisticRegression().fit(self.X_train, self.y_train)
-        pred        = reg.predict(self.X_test)
-        score       = log_loss(self.y_test ,pred)
-        round_score = round(score, 2 )
-        R           = results(title="Log Loss", loss=str(round_score) )
+        reg               = LogisticRegression().fit(self.X_train, self.y_train)
+        train_pred        = reg.predict(self.X_train)
+        pred              = reg.predict(self.X_test)
+        train_score       = log_loss(self.y_train ,train_pred)
+        round_train_score = round(train_score, 2 )
+        test_score        = log_loss(self.y_test ,pred)
+        round_test_score  = round(test_score, 2 )
+        R                 = results(title="Log Loss", loss_train=str(round_train_score),loss_test=str(round_test_score) )
         R.save()
-
+        
