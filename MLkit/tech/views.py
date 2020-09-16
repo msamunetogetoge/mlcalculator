@@ -3,7 +3,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .models import MlModel, selectedModel, UploadFileForm, selectedData, results
-from .calculations import Regression
+from .calculations import *
+
 
 import os
 from pathlib import Path
@@ -53,43 +54,24 @@ def calculation(request):
     層でない時は、警告ページに飛ばすが、まだ作ってないのでindexに飛ばす
     """
     if selectedModel.objects.first() and selectedData.objects.first() :
-        #計算ボタンからページに飛んだ時、modelとdataが選ばれていたら確認画面を表示する
-        #計算ページのボタンからpost request が飛んできている時はRegression を動かす
+        # modelとdataが選ばれていたときにcalculationsから機械学習モデルを動かす
         if not request.method == "POST":
             return render(request, "tech/calculation.html",{
-                "data"  : selectedData.objects.first(),
-                "model" : selectedModel.objects.first()
+                "data"  : selectedData.objects.last(),
+                "model" : selectedModel.objects.last()
             })
         else:
             #RegressionモデルにselectedDataの値を渡して学習
-            Regression(data=selectedData.objects.first().data ).learning()
+            eval(selectedModel.objects.last().code)(data=selectedData.objects.last().data ).learning()
 
-            return HttpResponseRedirect(reverse("result"),{
-                "results" : results.objects.all(),
-            })
+            return HttpResponseRedirect(reverse("result"))
             
     else:
         return render(request, "tech/empty.html")
 
 def get_result(request):
     return render(request, "tech/get_result.html",{
-        "results":results.objects.first()
+        "results":results.objects.last()
     })
-    pass
-    """
 
-    if request.method =="POST":
-        data=UploadFileForm(request.POST, request.FILES)
-
-        if data.is_vaild():
-            data=request.FILES["data"]
-            data=pd.read_csv(data)
-
-            return render(request, "tech/get_result.html",{
-                "models":MlModel.objects.all(),
-                "data":data
-            })
-    else:
-        return render(request, "tech/index.html")
-
-    """
+    

@@ -5,16 +5,20 @@
 {% endblock %}
 
 {% block style %} 
+#loss{
+    text-align: center;
+}
 {% endblock %}
 
 {% block body %}
 
 <h1>計算結果です</h1>
-<div>
-    損失関数 :{{results.title}},  loss :{{results.loss }}
+<div id="loss">
+    loss function :{{results.title}} <br>
+    loss value    :{{results.loss }}  
 </div>
-
-<div>
+<br>
+<div >
     <form action="{% url 'index'  %}">
         <button>目次へ</button>
     </form>
