@@ -11,6 +11,7 @@ urlpatterns=[
     path("select_data", views.select_data, name="datas"),
     path("get_result", views.get_result, name="result"),
     path("calculation", views.calculation, name="calculation"),
+    path("help", views.help, name="help"),
 
 ]
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent

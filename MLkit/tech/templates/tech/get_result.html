@@ -5,16 +5,33 @@
 {% endblock %}
 
 {% block style %} 
+#loss{
+    text-align: center;
+}
 {% endblock %}
 
 {% block body %}
 
 <h1>計算結果です</h1>
-<div>
-    損失関数 :{{results.title}},  loss :{{results.loss }}
+<div id="loss">
+    <table >
+    <tr>
+        <td>loss function </td>  <td>{{results.title}}</td>
+    </tr>
+    <tr>
+        <td>train loss value </td> <td>{{results.loss_train }}</td>
+    </tr>
+    <tr>
+        <td>test loss value</td>  <td>{{results.loss_test}}</td>
+    </tr>
+    </table>
 </div>
-
-<div>
+<br>
+<div >
+    <form action="{% url 'result' %}" method="POST" >
+        {% csrf_token %}
+        <button>結果のダウンロード</button>
+    </form>
     <form action="{% url 'index'  %}">
         <button>目次へ</button>
     </form>
