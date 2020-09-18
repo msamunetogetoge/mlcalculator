@@ -1,21 +1,24 @@
+from django.contrib import messages
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, FileResponse, HttpResponse
 from django.urls import reverse
 
 from .models import MlModel, selectedModel, UploadFileForm, selectedData, results
 from .calculations import *
 
-
+import csv
 import os
 from pathlib import Path
 
 # Create your views here.
 
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+BASE_DIR     = Path(__file__).resolve(strict=True).parent.parent
+MEDIA_URL    = '/media/'
+MEDIA_ROOT   = os.path.join(BASE_DIR, 'media')
+results_path = os.path.join(MEDIA_ROOT,"results.csv")
 
 def index(request):
+    
     return render(request, "tech/index.html",{
         "models":MlModel.objects.all()
     })
@@ -63,18 +66,42 @@ def calculation(request):
                 "model" : selectedModel.objects.last()
             })
         else:
-            #RegressionモデルにselectedDataの値を渡して学習
-            eval(selectedModel.objects.last().code)(data=selectedData.objects.last().data ).learning()
-
-            return HttpResponseRedirect(reverse("result"))
+            #選択されたモデルにselectedDataの値を渡して学習
+            global selected_mdl
+            selected_mdl = eval(selectedModel.objects.last().code)(data=selectedData.objects.last().data )
+            selected_mdl.learning()
+            return HttpResponseRedirect(reverse("result"),)
             
     else:
         return render(request, "tech/empty.html")
 
 def get_result(request):
-    return render(request, "tech/get_result.html",{
-        "results":results.objects.last()
-    })
+    """
+    result.html から request が飛んできたらモデルに保存してあるlossの値を表示する
+    result.html から request がgetで飛んで来たら、caluculations.py のresults を動かして結果を作成し、ダウンロードさせる 
+    """
+    if request.method =="POST":
+        if "selected_mdl" in globals():
+            response                        = HttpResponse(content_type="text/csv")
+            response['Content-Disposition'] = 'attachment; filename="results.csv"'
+            #selected_mdl が定義されていないことになる事があるのは何故？
+            output                          = selected_mdl.results()
+            length_of_results               = len(output)
+            writer                          = csv.writer(response)
+            #columns の出力
+            writer.writerow(output.columns)
+            #結果の出力
+            for i in range(length_of_results):
+                writer.writerow(output.iloc[i,:])
+            return response
+        else:
+            messages.error(request, "エラーが出ています。条件を確認してもう一度計算してください。")
+            return render(request, "tech/calculation.html")
+        
+    else:
+        return render(request, "tech/get_result.html",{
+            "results":results.objects.last()
+        })
 
 def help(request):
     """
@@ -84,10 +111,7 @@ def help(request):
     if request.method =="POST":
         content       = request.POST["help_content"]
         #return render(request, "tech/"+content+".html")
-        return render(request, "tech/index.html")
-
-        
-    
+        return render(request, "tech/index.html")    
     else:
         return render(request, "tech/help.html",{
             "models":MlModel.objects.all(),

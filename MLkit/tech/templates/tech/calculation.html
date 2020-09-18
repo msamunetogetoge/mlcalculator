@@ -3,15 +3,22 @@
 {% block title %} 
 条件確認
 {% endblock %}
-
 {% block style %} 
-    
 {% endblock %}
-
 {% block body %}
 
+{% if messages %}
+	<h2 class="err_message">
+        {% for message in messages %}
+			{{ message }}
+		{% endfor %}
+    </h2>
+{% endif %}
 
+{% if not messages %}
 <h1>以下の条件で計算しますか？</h1>
+{% endif %}
+
 <div id="centered_contents">
 <ul> 
     <li>使うデータ: {{data.title }}</li>

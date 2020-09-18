@@ -11,6 +11,7 @@
 <h1>簡単機械学習計算機</h1>
 <h1>使用するモデルを選択してください</h1>
 
+    
 <form action ="{% url 'model' %}" method="post">
     {% csrf_token %}
     <select name="selected_model">

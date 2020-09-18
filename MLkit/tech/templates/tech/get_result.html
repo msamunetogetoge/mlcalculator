@@ -7,7 +7,6 @@
 {% block style %} 
 #loss{
     text-align: center;
-
 }
 {% endblock %}
 
@@ -15,7 +14,7 @@
 
 <h1>計算結果です</h1>
 <div id="loss">
-    <table>
+    <table >
     <tr>
         <td>loss function </td>  <td>{{results.title}}</td>
     </tr>
@@ -29,6 +28,10 @@
 </div>
 <br>
 <div >
+    <form action="{% url 'result' %}" method="POST" >
+        {% csrf_token %}
+        <button>結果のダウンロード</button>
+    </form>
     <form action="{% url 'index'  %}">
         <button>目次へ</button>
     </form>
