@@ -5,7 +5,14 @@
 {% endblock %}
 
 {% block style %} 
-
+    div {
+        width: 100%;
+    }
+    ol {
+        width:50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 {% endblock %}
 
 {% block body %}
@@ -13,7 +20,7 @@
 <div>
     <h1>使い方の流れ</h1>
 </div>
-<div>
+<div >
     <ol>
         <li>やりたい事と合致したモデルを選択</li>
         <li>データを成形してアップロード</li>
@@ -26,8 +33,8 @@
     
 </div>
 <div>
-    <form action ="{% url 'help' %}" method="post">
-        選択すると説明ページに飛びます
+    <form action ="{% url 'help' %}" method="post" target="_blank" rel="noopener noreferrer">
+        選択するとブログの説明ページに飛びます
         {% csrf_token %}
         <select name="help_content">
             {% for model in models %}

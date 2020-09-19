@@ -16,7 +16,7 @@
 <div>
     <table >
         <tr>
-            <form action ="{% url 'datas'  %}" enctype="multipart/form-data"  method="post" >
+            <form action ="{% url 'datas'  %}" enctype="multipart/form-data"  method="post"  >
                 {% csrf_token %}
                 <td>{{ form.as_p }}</td>
             <td><button type="submit">選択</button> </td>
