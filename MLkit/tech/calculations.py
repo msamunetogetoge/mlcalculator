@@ -3,6 +3,8 @@ import pandas as pd
 import numpy as np
 import os
 from pathlib import Path
+import tensorflow as tf
+from tensorflow import keras
 
 from sklearn.linear_model import LinearRegression,LogisticRegression
 from sklearn.metrics import r2_score, log_loss
@@ -67,7 +69,7 @@ class Logistic():
     csvファイルを受け取り、一列目を、それ以外の列から予測するクラス。
     そのうち、訓練用のcsvとテスト用のcsvを受け取って学習とテストを出来るようにするかもしれない。
     暫くは、もらったcsvファイルを訓練：テスト=7:3で分けて学習する。
-    学習後は、R二乗誤差を計算して、models.pyのresults に格納する。
+    学習後は、loglossを計算して、models.pyのresults に格納する。
     log_loss は0に近い程良い
     """
 
@@ -103,7 +105,7 @@ class Logistic():
     def results(self):
         """
         train/test の目印、予測値、元データのように列名を指定して、media root に結果を保存する
-        何故かresults の形が変になるので、直しましょう
+        
         """
         Xs               = pd.concat([self.X_train, self.X_test], axis=0, ignore_index=True)
         ys               = pd.DataFrame(data = np.append(self.y_train, self.y_test), columns = [self.columns[0]])
@@ -114,7 +116,119 @@ class Logistic():
         results          = pd.concat([mask, preds, ys, Xs], axis = 1)
         return results
         
+class NN_classification():
+    """ニューラルネットワークで分類を行う時に使うクラス
+    csvファイルを受け取り、一列目を、それ以外の列から予測するクラス。
+    そのうち、訓練用のcsvとテスト用のcsvを受け取って学習とテストを出来るようにするかもしれない。
+    暫くは、もらったcsvファイルを訓練：テスト=7:3で分けて学習する。
+    学習後は、誤差を計算して、models.pyのresults に格納する。
+    rmseは0に近い程よい
+    """
 
+   def __init__(self, data):
+        data              = pd.read_csv(data).dropna()
+        self.columns      = data.columns
+        self.y            = data.iloc[:,0]
+        self.X            = data.drop(columns=self.columns[0] )
+        self.random       = 1
+
+        self.X_train, \
+        self.X_test,  \
+        self.y_train, \
+        self.y_test       = train_test_split(self.X, self.y, test_size=0.3, random_state=self.random )
+
+    def learning(self):
+        reg               = LinearRegression().fit(self.X_train, self.y_train)
+        self.train_pred   = reg.predict(self.X_train)
+        self.pred         = reg.predict(self.X_test)
+        train_score       = r2_score(self.y_train ,self.train_pred)
+        round_train_score = round(train_score, 2 )
+        test_score        = r2_score(self.y_test ,self.pred)
+        round_test_score  = round(test_score, 2 )
+        R                 = results(title="R^2 score", loss_train=str(round_train_score),loss_test=str(round_test_score) )
+        R.save()
+        
+    
+    def results(self):
+        """
+        train/test の目印、予測値、元データのように列名を指定して、media root に結果を保存する
+        """
+        Xs               = pd.concat([self.X_train, self.X_test], axis=0, ignore_index=True)
+        ys               = pd.DataFrame(data = np.append(self.y_train, self.y_test), columns = [self.columns[0]])
+        preds            = pd.DataFrame(data = np.append(self.train_pred, self.pred), columns=["predict"])
+        mask_train       = ["train"]*len(self.y_train)
+        mask_test        = ["test"]*len(self.y_test)
+        mask             = pd.DataFrame(data = np.append(mask_train, mask_test), columns = ["train_or_test"])
+        results          = pd.concat([mask, preds, ys, Xs], axis = 1)
+        return results
+        
+class NN_classification():
+    """
+    ニューラルネットワークで分類を行う時に使うクラス
+    csvファイルを受け取り、一列目を、それ以外の列から予測するクラス。
+    そのうち、訓練用のcsvとテスト用のcsvを受け取って学習とテストを出来るようにするかもしれない。
+    暫くは、もらったcsvファイルを訓練：テスト=7:3で分けて学習する。
+    学習後は、cross entropy誤差を計算して、models.pyのresults に格納する。
+    ガチの機械学習モデルを使えるようにしていく段階で、accracyとかのグラフを描けるようにするかもしれない 
+    """
+    def __init__(self, data):
+        self.le           = LabelEncoder()
+        data              = pd.read_csv(data).dropna()
+        self.columns      = data.columns
+        self.y            = data.iloc[:,0]
+        self.le           = self.le.fit(self.y)
+        self.X            = data.drop(columns=self.columns[0] )
+        self.random       = 1
+        self.X_train, \
+        self.X_test,  \
+        self.y_train, \
+        self.y_test       = train_test_split(
+                            self.X, self.y, test_size=0.3,
+                            random_state=self.random )
+
+    def learning(self):
+        num_of_features         = self.X.shape[1]
+        num_of_class            = len(set(self.le.transform(self.y)))
+        y_train_label           = self.le.transform(self.y_train)
+        y_test_label            = self.le.transform(self.y_test)
+        model                   = keras.Sequential([
+                               keras.layers.Dense(64, activation='relu',  
+                                                  input_shape=(num_of_features, )),
+                               keras.layers.Dense(64, activation='relu'),
+                               keras.layers.Dropout(rate=0.3),
+                               keras.layers.Dense(num_of_class, activation='softmax')
+                               ])
+        model.compile(optimizer ='adam', 
+                           loss='sparse_categorical_crossentropy',
+                           metrics=['accuracy'])
+        self.history            = model.fit(self.X_train, y_train_label, epochs = 100, 
+                                  validation_data= (self.X_test, y_test_label), verbose=0)
+        self.train_pred         = model.predict(self.X_train)
+        self.pred               = model.predict(self.X_test)
+        hist                    = pd.DataFrame(self.history.history)
+        self.results            = hist.tail(1)[["loss", "val_loss", "accuracy", "val_accuracy"]]
+        round_train_score       = round(self.results["loss"], 2 )
+        round_test_score        = round(self.results["val_loss"], 2 )
+        R                       = results(title="CrossEntropy", 
+        loss_train=str(round_train_score),loss_test=str(round_test_score) )
+        R.save()
+
+    
+    def get_results(self):
+        """
+        train/test の目印、予測値、元データのように列名を指定して、media root に結果を保存する
+        """
+        Xs                = pd.concat([self.X_train, self.X_test], axis=0, ignore_index=True)
+        train_preds_label = self.le.inverse_transform(np.argmax(self.train_pred, axis=1))
+        preds_label       = self.le.inverse_transform(np.argmax(self.pred, axis=1))
+
+        ys                = pd.DataFrame(data = np.append(self.y_train, self.y_test), columns = [self.columns[0]])
+        preds             = pd.DataFrame(data = np.append(train_preds_label, preds_label), columns=["predict"])
+        mask_train        = ["train"]*len(self.y_train)
+        mask_test         = ["test"]*len(self.y_test)
+        mask              = pd.DataFrame(data = np.append(mask_train, mask_test), columns = ["train_or_test"])
+        results           = pd.concat([mask, preds, ys, Xs], axis = 1)
+        return results
 
 
 
