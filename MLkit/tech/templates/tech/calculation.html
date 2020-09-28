@@ -1,12 +1,10 @@
 {% extends "tech/layout.html" %}
 
-{% block title %} 
-条件確認
-{% endblock %}
-{% block style %} 
-{% endblock %}
-{% block body %}
+{% block landing-page-title %}
+MML Calculator
+{% endblock %} 
 
+{% block h2-title %}
 {% if messages %}
 	<h2 class="err_message">
         {% for message in messages %}
@@ -14,20 +12,20 @@
 		{% endfor %}
     </h2>
 {% endif %}
-
 {% if not messages %}
-<h1>以下の条件で計算しますか？</h1>
+以下の条件で計算しますか？
 {% endif %}
+{% endblock %}
 
-<div id="centered_contents">
+{% block contents %}
+<div >
 <ul> 
     <li>使うデータ: {{data.title }}</li>
     <li>使う手法: {{model.mdl }}</li>
 </ul>
-
 </div>
 <div >
-    <table id="buttons">
+    <table class="table">
         <tr>
             <td>
             <form action ="{% url 'calculation'  %}"   method="post" >
@@ -43,8 +41,4 @@
         </tr>
     </table>
 </div>
-
-
-
-
 {% endblock %}

@@ -1,41 +1,40 @@
 {% extends "tech/layout.html" %}
 
-{% block title %} 
-計算結果
+{% block landing-page-title %}
+MML Calculator
+{% endblock %} 
+
+{% block h2-title %}
+計算結果です。
 {% endblock %}
 
-{% block style %} 
-#loss{
-    text-align: center;
-}
-{% endblock %}
-
-{% block body %}
-
-<h1>計算結果です</h1>
+{% block contents %}
 <div id="loss">
-    <table >
-    <tr>
-        <td>loss function </td>  <td>{{results.title}}</td>
-    </tr>
-    <tr>
-        <td>train loss value </td> <td>{{results.loss_train }}</td>
-    </tr>
-    <tr>
-        <td>test loss value</td>  <td>{{results.loss_test}}</td>
-    </tr>
-    </table>
+    <table class="table table-striped table-dark" >
+        <thead>
+            <tr>
+              <th scope="col">Loss Function </th>
+              <th scope="col">Train Loss Value</th>
+              <th scope="col">Test Loss Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <th scope="row">{{results.title}}</th>
+                <td class="text-center">{{results.loss_train }}</td>
+                <td class="text-center">{{results.loss_test}}</td>
+            </tr>
+          </tbody>
+        </table>
 </div>
 <br>
 <div >
     <form action="{% url 'result' %}" method="POST" >
         {% csrf_token %}
-        <button>結果のダウンロード</button>
+        <button class="btn btn-primary">結果のダウンロード</button>
     </form>
     <form action="{% url 'index'  %}">
-        <button>目次へ</button>
+        <button class="btn btn-primary">最初の画面へ</button>
     </form>
 </div>
-
-
 {% endblock %}

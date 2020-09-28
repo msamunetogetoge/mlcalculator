@@ -1,49 +1,38 @@
 {% extends "tech/layout.html" %}
+{% block landing-page-title %}
+ヘルプページ
+{% endblock %} 
 
-{% block title %} 
-使い方など
+{% block h2-title %}
+使い方の流れ
 {% endblock %}
 
-{% block style %} 
-    div {
-        width: 100%;
-    }
-    ol {
-        width:50%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-{% endblock %}
-
-{% block body %}
+{% block contents %}
 
 <div>
-    <h1>使い方の流れ</h1>
-</div>
-<div >
-    <ol>
-        <li>やりたい事と合致したモデルを選択</li>
+    <ol >
+        <li >やりたい事と合致したモデルを選択</li>
         <li>データを成形してアップロード</li>
         <li>計算ボタンを押して計算させる</li>
         <li>ダウンロードボタンから結果ファイルを取得する</li>
     </ol>
 </div>
-<div>
-    <h1>モデルの説明</h1>
-    
-</div>
-<div>
-    <form action ="{% url 'help' %}" method="post" target="_blank" rel="noopener noreferrer">
-        選択するとブログの説明ページに飛びます
-        {% csrf_token %}
-        <select name="help_content">
+
+<h2 class="title">モデルの説明</h2>
+<form action ="{% url 'help' %}" method="post" target="_blank" rel="noopener noreferrer">
+    {% csrf_token %}
+    <div class="input-group">
+        <select class="custom-select"  >
+            <option selected>Choose...</option>
             {% for model in models %}
-                <option value="{{ model.code }}">{{model.mdl}}</option>
+            <option value="{{ model.code }}" >{{model.mdl}}</option>
             {% endfor %}
         </select>
-        <input type="submit" value="go">
-    </form>
-</div>
-
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit" name="help_content">go</button>
+        </div>
+    </div>
+    選択するとブログの説明ページに飛びます
+</form>
 
 {% endblock %}
