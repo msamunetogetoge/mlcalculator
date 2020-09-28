@@ -109,9 +109,11 @@ def help(request):
     ブログ記事をコピペする？
     """
     if request.method =="POST":
-        content       = request.POST["help_content"]
-        #return render(request, "tech/"+content+".html")
-        return render(request, "tech/index.html")    
+        content       = request.POST["help_content"].lower()
+        masamune      = "https://masamunetogetoge.com/"
+        overview      = "-overview"
+        guide_path    = masamune + content + overview
+        return HttpResponseRedirect(guide_path)   
     else:
         return render(request, "tech/help.html",{
             "models":MlModel.objects.all(),

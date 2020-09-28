@@ -33,6 +33,6 @@ class UploadFileForm(ModelForm):
 
     class Meta:
         model    = selectedData 
-        fields   = ('title', 'data' )
+        fields   = ('title','data' )
 
     

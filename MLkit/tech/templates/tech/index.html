@@ -1,33 +1,27 @@
 {% extends "tech/layout.html" %}
 
-{% block title %} 
-データ・モデル選択
+{% block landing-page-title %}
+MML Calculator
+{% endblock %} 
+
+{% block h2-title %}
+使用するモデルを選んでください
 {% endblock %}
 
-{% block style %} 
-{% endblock %}
-
-{% block body %}
-<h1>簡単機械学習計算機</h1>
-<h1>使用するモデルを選択してください</h1>
-
-    
+{% block contents %}
 <form action ="{% url 'model' %}" method="post">
     {% csrf_token %}
-    <select name="selected_model">
+    <select class="custom-select" name="selected_model">
+        <option selected>Select ML model</option>
         {% for model in models %}
             <option value="{{ model.code }}">{{model.mdl}}</option>
         {% endfor %}
-
     </select>
-    <input type="submit">
-</form>
-
-<form action ="{% url 'help' %} ">
-    <button> 使い方</button>
-
+    <button type="submit" class="btn btn-primary">選択</button>
+    
 </form>
 {% endblock %}
+
 
 
 

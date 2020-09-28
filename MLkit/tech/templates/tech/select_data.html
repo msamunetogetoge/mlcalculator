@@ -1,32 +1,22 @@
 {% extends "tech/layout.html" %}
 
-{% block title %} 
-データ選択
+{% block landing-page-title %}
+MML Calculator
+{% endblock %} 
+
+{% block h2-title %}
+
+データを選んでください。
+
 {% endblock %}
 
-{% block style %} 
+{% block contents %}
 
-{% endblock %}
-
-{% block body %}
-
-<div >
-    <h1>データを選択してください</h1>
-</div>
-<div>
-    <table >
-        <tr>
-            <form action ="{% url 'datas'  %}" enctype="multipart/form-data"  method="post" >
-                {% csrf_token %}
-                <td>{{ form.as_p }}</td>
-            <td><button type="submit">選択</button> </td>
-            </form>
-            <form action="{% url 'index' %}">
-                <td><button>戻る</button></td>
-            </form>
-        </tr>
-    </table>
-</div>
-
-
+<form action ="{% url 'datas'  %}" enctype="multipart/form-data"  method="post"  >
+    <div>
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <button type="submit"class="btn btn-primary"> 選択</button>
+    </div>
+</form>
 {% endblock %}
