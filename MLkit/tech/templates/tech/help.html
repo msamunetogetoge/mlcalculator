@@ -19,17 +19,17 @@
 </div>
 
 <h2 class="title">モデルの説明</h2>
-<form action ="{% url 'help' %}" method="post" target="_blank" rel="noopener noreferrer">
+<form action ="{% url 'help' %}" method="post" target="_blank" rel="noopener noreferrer" >
     {% csrf_token %}
     <div class="input-group">
-        <select class="custom-select"  >
-            <option selected>Choose...</option>
+        <select class="custom-select"  name="help_content" id="select_model">
+            <option selected value="none_model">Choose Model...</option>
             {% for model in models %}
             <option value="{{ model.code }}" >{{model.mdl}}</option>
             {% endfor %}
         </select>
         <div class="input-group-append">
-            <button class="btn btn-primary" type="submit" name="help_content">go</button>
+            <button class="btn btn-primary" type="submit" id="submit" disabled>go</button>
         </div>
     </div>
     選択するとブログの説明ページに飛びます

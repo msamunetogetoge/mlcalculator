@@ -12,13 +12,18 @@ MML Calculator
 		{% endfor %}
     </h2>
 {% endif %}
+<div id="check_condition"> 
 {% if not messages %}
 以下の条件で計算しますか？
 {% endif %}
+</div>
+<div id="calculation_now"　>
+    計算中です
+</div>
 {% endblock %}
 
 {% block contents %}
-<div >
+<div>
 <ul> 
     <li>使うデータ: {{data.title }}</li>
     <li>使う手法: {{model.mdl }}</li>
@@ -30,15 +35,16 @@ MML Calculator
             <td>
             <form action ="{% url 'calculation'  %}"   method="post" >
                 {% csrf_token %}
-                <button type="submit">計算</button>
+                <input class="btn btn-primary" type="submit" value="計算"></input>
             </form>
             </td>
             <td>
             <form action="{% url 'datas' %}">
-                <button>戻る</button>
+                <input class="btn btn-success" type="submit" value="戻る"></input>
             </form>
             </td>
         </tr>
     </table>
 </div>
+
 {% endblock %}

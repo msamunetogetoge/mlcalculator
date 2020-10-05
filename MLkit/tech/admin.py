@@ -15,8 +15,11 @@ class SelectedDataAdmin(admin.ModelAdmin):
 class ResultsAdmin(admin.ModelAdmin):
     list_display = ("id","title", "loss")
 
+class LayersAdmin(admin.ModelAdmin):
+    list_display = ("id","layer1", "layer2")
 
 admin.site.register(MlModel)
 admin.site.register(selectedModel)
 admin.site.register(selectedData)
 admin.site.register(results)
+admin.site.register(NN_layers)

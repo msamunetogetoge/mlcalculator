@@ -1,4 +1,5 @@
 {% extends "tech/layout.html" %}
+{% load static %}
 
 {% block landing-page-title %}
 MML Calculator
@@ -19,4 +20,14 @@ MML Calculator
     <button type="submit"class="btn btn-primary"> 選択</button>
     </div>
 </form>
+<p class="help-block">※下の画像のようなcsvファイルにのみ対応しています</p>
+<figure>
+    <div class="thumbnail">
+        <img src="{% static 'img/exam_img.jpg' %}" alt="説明用画像"  width="287" height="162">
+        <figcaption>A列に答え, B列以降は特徴量</figcaption>
+    </div>
+    
+</figure>
+
+
 {% endblock %}
