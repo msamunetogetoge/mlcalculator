@@ -5,21 +5,22 @@ MML Calculator
 {% endblock %} 
 
 {% block h2-title %}
-使用するモデルを選んでください
+使用モデルを選んでください
 {% endblock %}
 
 {% block contents %}
 <form action ="{% url 'model' %}" method="post">
     {% csrf_token %}
-    <select class="custom-select" name="selected_model">
-        <option selected>Select ML model</option>
+    <select class="custom-select" name="selected_model" id="select_model">
+        <option selected value="none_model">Select ML model</option>
         {% for model in models %}
             <option value="{{ model.code }}">{{model.mdl}}</option>
         {% endfor %}
     </select>
-    <button type="submit" class="btn btn-primary">選択</button>
-    
+    <input type="submit" class="btn btn-primary" id="submit" disabled></input>
 </form>
+
+
 {% endblock %}
 
 

@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, FileResponse, HttpResponse
 from django.urls import reverse
 
-from .models import MlModel, selectedModel, UploadFileForm, selectedData, results
+from .models import *
 from .calculations import *
 
 import csv
@@ -31,12 +31,21 @@ def select_model(request):
         model          = MlModel.objects.get(code=code)
         selected_model = selectedModel(code=model.code, mdl=model.mdl)
         selected_model.save()
-        return HttpResponseRedirect(reverse("datas"))
+        if "NN" in code:
+            return render(request,"tech/make_NN_model.html")
+        else:
+            return HttpResponseRedirect(reverse("datas"))
     else:
         return render(request, "tech/index.html" ,{
             "models":MlModel.objects.all()
         })
-    
+
+def make_NN(request):
+    if request.method=="POST":
+        model          = NN_layers(layer1=request.POST["layer1"],layer2=request.POST["layer2"] )
+        model.save()
+        return HttpResponseRedirect(reverse("datas"))
+
 
 
 def select_data(request):
@@ -58,7 +67,7 @@ def calculation(request):
     selectedData とselectedModel に値が格納されている時だけ、確認画面に行く
     層でない時は、警告ページに飛ばすが、まだ作ってないのでindexに飛ばす
     """
-    if selectedModel.objects.first() and selectedData.objects.first() :
+    if selectedModel.objects.exists() and selectedData.objects.exists() :
         # modelとdataが選ばれていたときにcalculationsから機械学習モデルを動かす
         if not request.method == "POST":
             return render(request, "tech/calculation.html",{
@@ -68,12 +77,17 @@ def calculation(request):
         else:
             #選択されたモデルにselectedDataの値を渡して学習
             global selected_mdl
-            selected_mdl = eval(selectedModel.objects.last().code)(data=selectedData.objects.last().data )
+            if "NN" in selectedModel.objects.last().code:
+                layers       = NN_layers.objects.last()
+                layers       = (layers.layer1, layers.layer2)
+                selected_mdl = eval(selectedModel.objects.last().code)(data=selectedData.objects.last().data,layers=layers )
+            else:
+                selected_mdl = eval(selectedModel.objects.last().code)(data=selectedData.objects.last().data )
             selected_mdl.learning()
             return HttpResponseRedirect(reverse("result"),)
             
     else:
-        return render(request, "tech/empty.html")
+        return HttpResponseRedirect(reverse("empty"))
 
 def get_result(request):
     """
@@ -85,7 +99,7 @@ def get_result(request):
             response                        = HttpResponse(content_type="text/csv")
             response['Content-Disposition'] = 'attachment; filename="results.csv"'
             #selected_mdl が定義されていないことになる事があるのは何故？
-            output                          = selected_mdl.results()
+            output                          = selected_mdl.get_results()
             length_of_results               = len(output)
             writer                          = csv.writer(response)
             #columns の出力
@@ -104,17 +118,21 @@ def get_result(request):
         })
 
 def help(request):
+
     """
-    help ページからモデルが選ばれていたら、そのモデルの説明ページへ飛ばす
-    ブログ記事をコピペする？
+    help ページからモデルが選ばれていたら、そのモデルの説明ページへ飛ばす(ブログ)
     """
     if request.method =="POST":
-        content       = request.POST["help_content"].lower()
         masamune      = "https://masamunetogetoge.com/"
         overview      = "-overview"
+        content       = request.POST["help_content"].lower()
+        if "nn" in content:
+            content ="nn"
         guide_path    = masamune + content + overview
         return HttpResponseRedirect(guide_path)   
     else:
         return render(request, "tech/help.html",{
             "models":MlModel.objects.all(),
         })
+def empty(request):
+    return render(request,"tech/empty.html" )

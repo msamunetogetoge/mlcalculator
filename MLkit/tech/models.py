@@ -1,5 +1,6 @@
 from django.db import models
 from django.forms import ModelForm
+from django.core.validators import MaxValueValidator, MinValueValidator 
 
 # Create your models here.
 
@@ -14,6 +15,19 @@ class selectedModel(models.Model):
     mdl         = models.CharField(max_length=64)
     code        = models.CharField(max_length=64)
 
+    def __str__(self):
+        return f"{self.mdl} :({self.code})"
+
+class NN_layers(models.Model):
+    layer1      = models.PositiveSmallIntegerField(default=64,
+    validators=[MinValueValidator(1), MaxValueValidator(128)])
+    layer2      = models.PositiveSmallIntegerField(default=64,
+    validators=[MinValueValidator(1), MaxValueValidator(128)])
+    def __str__(self):
+        return f"Layer1: {self.layer1}, Layer2:{self.layer2}"
+
+    
+
 class selectedData(models.Model):
     title       = models.CharField('title', max_length=64)
     data        = models.FileField(upload_to="media",null=True)
@@ -21,18 +35,22 @@ class selectedData(models.Model):
     def __str__(self):
         return self.title
 
-class results(models.Model):
-    title        = models.CharField(max_length=64)
-    loss_train   = models.CharField(max_length=10, default=0)
-    loss_test    = models.CharField(max_length=10, default=0)
-
-    def __str__(self):
-        return f"{self.title} :{self.loss_train}, {self.loss_test}"
-
 class UploadFileForm(ModelForm):
 
     class Meta:
         model    = selectedData 
         fields   = ('title','data' )
+
+class results(models.Model):
+    title        = models.CharField(max_length=64)
+    loss_train   = models.CharField(max_length=10, default=0)
+    loss_test    = models.CharField(max_length=10, default=0)
+    description = models.CharField(max_length=64)
+    
+
+    def __str__(self):
+        return f"{self.title} :{self.loss_train}, {self.loss_test}"
+
+
 
     
