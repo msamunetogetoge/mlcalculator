@@ -14,6 +14,7 @@ urlpatterns=[
     path("get_result", views.get_result, name="result"),
     path("calculation", views.calculation, name="calculation"),
     path("help", views.help, name="help"),
+    path("error", views.error, name="data_error"),
 
 ]
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent

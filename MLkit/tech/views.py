@@ -5,6 +5,7 @@ from django.urls import reverse
 
 from .models import *
 from .calculations import *
+from .check_data import *
 
 import csv
 import os
@@ -75,14 +76,31 @@ def calculation(request):
                 "model" : selectedModel.objects.last()
             })
         else:
-            #選択されたモデルにselectedDataの値を渡して学習
+            #selected_mdl に選択されたモデルの情報を渡す
             global selected_mdl
-            if "NN" in selectedModel.objects.last().code:
+            mlmodel = selectedModel.objects.last().code
+            if "NN" in mlmodel: 
                 layers       = NN_layers.objects.last()
                 layers       = (layers.layer1, layers.layer2)
-                selected_mdl = eval(selectedModel.objects.last().code)(data=selectedData.objects.last().data,layers=layers )
+                selected_mdl = eval(mlmodel)(data=selectedData.objects.last().data,layers=layers )
             else:
-                selected_mdl = eval(selectedModel.objects.last().code)(data=selectedData.objects.last().data )
+                selected_mdl = eval(mlmodel)(data=selectedData.objects.last().data )
+            #model にあったデータの形かチェックする。yの値が変な時はabonが出てくる
+            data_type = selected_mdl.y.dtype
+            if "regression" in mlmodel.lower():
+                if check_data_type(model="regression", data_type=data_type) == "abon":
+                    return render(request, "tech/error",{
+                        "msg": "回帰の時は、A列に実数を使用してください"
+                    })
+                else:
+                    pass
+            if "classification" in mlmodel.lower():
+                if check_data_type(model="classification", data_type=data_type) == "abon":
+                    return render(request, "tech/error",{
+                        "msg": "分類の時は、A列に整数か文字を使用してください"
+                    })
+                else:
+                    pass
             selected_mdl.learning()
             return HttpResponseRedirect(reverse("result"),)
             
@@ -136,3 +154,6 @@ def help(request):
         })
 def empty(request):
     return render(request,"tech/empty.html" )
+
+def error(request):
+    return 
