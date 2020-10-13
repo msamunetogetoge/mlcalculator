@@ -81,8 +81,7 @@ DATABASES = {
         'NAME': 'mmlcalculator',
         'USER': 'masamune',
         'PASSWORD': 'kenji0121',
-        #'HOST': 'localhost',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
