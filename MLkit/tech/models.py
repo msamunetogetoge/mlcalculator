@@ -19,10 +19,8 @@ class selectedModel(models.Model):
         return f"{self.mdl} :({self.code})"
 
 class NN_layers(models.Model):
-    layer1      = models.PositiveSmallIntegerField(default=64,
-    validators=[MinValueValidator(1), MaxValueValidator(128)])
-    layer2      = models.PositiveSmallIntegerField(default=64,
-    validators=[MinValueValidator(1), MaxValueValidator(128)])
+    layer1      = models.PositiveSmallIntegerField(default=64)
+    layer2      = models.PositiveSmallIntegerField(default=64)
     def __str__(self):
         return f"Layer1: {self.layer1}, Layer2:{self.layer2}"
 
@@ -45,11 +43,10 @@ class results(models.Model):
     title        = models.CharField(max_length=64)
     loss_train   = models.CharField(max_length=10, default=0)
     loss_test    = models.CharField(max_length=10, default=0)
-    description = models.CharField(max_length=64)
-    
+    description  = models.CharField(max_length=64)
 
     def __str__(self):
-        return f"{self.title} :{self.loss_train}, {self.loss_test}"
+        return f"{self.title} :{self.loss_train}, {self.loss_test}: {self.description}"
 
 
 

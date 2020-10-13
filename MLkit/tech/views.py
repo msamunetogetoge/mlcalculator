@@ -10,6 +10,7 @@ from .check_data import *
 import csv
 import os
 from pathlib import Path
+import logging
 
 # Create your views here.
 
@@ -17,21 +18,26 @@ BASE_DIR     = Path(__file__).resolve(strict=True).parent.parent
 MEDIA_URL    = '/media/'
 MEDIA_ROOT   = os.path.join(BASE_DIR, 'media')
 results_path = os.path.join(MEDIA_ROOT,"results.csv")
+logger       = logging.getLogger(__name__)
 
 def index(request):
-    
     return render(request, "tech/index.html",{
         "models":MlModel.objects.all()
     })
 
-
-
 def select_model(request):
     if request.method  =="POST":
-        code           = request.POST["selected_model"]
-        model          = MlModel.objects.get(code=code)
-        selected_model = selectedModel(code=model.code, mdl=model.mdl)
-        selected_model.save()
+        try:
+            code           = request.POST["selected_model"]
+            model          = MlModel.objects.get(code=code)
+            selected_model = selectedModel(code=model.code, mdl=model.mdl)
+            selected_model.save()
+        except Exception as e:
+            #DBで何か変なことが起きていたらログを記録してもう一度入力させる
+            logger.error(e)
+            return render(request, "tech/index.html" ,{
+            "models":MlModel.objects.all()
+        })
         if "NN" in code:
             return render(request,"tech/make_NN_model.html")
         else:
@@ -42,11 +48,13 @@ def select_model(request):
         })
 
 def make_NN(request):
+    #もしもDBが動いて無い場合の処理を記述する?
     if request.method=="POST":
         model          = NN_layers(layer1=request.POST["layer1"],layer2=request.POST["layer2"] )
         model.save()
         return HttpResponseRedirect(reverse("datas"))
-
+    else:
+        return HttpResponseRedirect(reverse("empty"))
 
 
 def select_data(request):
@@ -65,8 +73,8 @@ def select_data(request):
     
 def calculation(request):
     """
-    selectedData とselectedModel に値が格納されている時だけ、確認画面に行く
-    層でない時は、警告ページに飛ばすが、まだ作ってないのでindexに飛ばす
+    GETの時は、selectedData とselectedModel に値が格納されている時だけ、確認画面に行く
+    POSTの時は、計算結果をmodelに格納してget_resultに飛ぶ
     """
     if selectedModel.objects.exists() and selectedData.objects.exists() :
         # modelとdataが選ばれていたときにcalculationsから機械学習モデルを動かす
@@ -89,14 +97,14 @@ def calculation(request):
             data_type = selected_mdl.y.dtype
             if "regression" in mlmodel.lower():
                 if check_data_type(model="regression", data_type=data_type) == "abon":
-                    return render(request, "tech/error",{
-                        "msg": "回帰の時は、A列に実数を使用してください"
+                    return render(request, "tech/error.html",{
+                        "msg": "回帰の時は、A列に実数か整数を使用してください"
                     })
                 else:
                     pass
             if "classification" in mlmodel.lower():
                 if check_data_type(model="classification", data_type=data_type) == "abon":
-                    return render(request, "tech/error",{
+                    return render(request, "tech/error.html",{
                         "msg": "分類の時は、A列に整数か文字を使用してください"
                     })
                 else:
@@ -131,9 +139,7 @@ def get_result(request):
             return render(request, "tech/calculation.html")
         
     else:
-        return render(request, "tech/get_result.html",{
-            "results":results.objects.last()
-        })
+        return render(request, "tech/calculation.html")
 
 def help(request):
 
@@ -156,4 +162,4 @@ def empty(request):
     return render(request,"tech/empty.html" )
 
 def error(request):
-    return 
+    return render(request,"tech/error.html" )

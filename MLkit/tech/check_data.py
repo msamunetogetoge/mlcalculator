@@ -4,7 +4,7 @@ def raise_err_cls(data_type):
     else:
         raise Exception
 def raise_err_reg(data_type):
-    if data_type == "float64":
+    if data_type in ["int64", "float64"]:
         pass
     else:
         raise Exception

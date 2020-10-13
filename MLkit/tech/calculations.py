@@ -49,7 +49,7 @@ class Regression():
         R.save()
         
     
-    def results(self):
+    def get_results(self):
         """
         train/test の目印、予測値、元データのように列名を指定して、media root に結果を保存する
         """
@@ -63,7 +63,7 @@ class Regression():
         return results
         
 
-class Logistic():
+class Logistic_classification():
     """ロジスティック回帰を行う時に使うクラス
     csvファイルを受け取り、一列目を、それ以外の列から予測するクラス。
     そのうち、訓練用のcsvとテスト用のcsvを受け取って学習とテストを出来るようにするかもしれない。
@@ -100,7 +100,7 @@ class Logistic():
         R                 = results(title="Log Loss", loss_train=str(round_train_score),loss_test=str(round_test_score), description="0に近い程良い" )
         R.save()
     
-    def results(self):
+    def get_results(self):
         """
         train/test の目印、予測値、元データのように列名を指定して、media root に結果を保存する
         
