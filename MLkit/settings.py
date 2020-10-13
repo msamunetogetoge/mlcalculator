@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'MLkit.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mmlcalculator',
         'USER': 'masamune',
         'PASSWORD': 'kenji0121',
