@@ -8,17 +8,27 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_DB=mmlcalculator
-      - POSTGRES_USER=masamune
-      - POSTGRES_PASSWORD=kenji0121
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
       - POSTGRES_HOST=localhost
       #docker.for.win.localhost
     
 
+    
+
   web:
+    container_name: mlkit
     build: .
-    command: python3 manage.py makemigrations
-    command: python3 manage.py migrate
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: python manage.py shell
+    command: from tech.models import MlModel
+    command: MlModel(mdl="回帰分析", code="Regression").save()
+    command: MlModel(mdl="ロジスティック回帰", code="Logistic_classification").save()
+    command: MlModel(mdl="NN回帰",code="NN_regression").save()
+    command: MlModel(mdl="NN分類",code="NN_classification").save()
+    command: quit()
+    command: python manage.py makemigrations
+    command: python manage.py migrate
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
@@ -26,7 +36,4 @@ services:
     depends_on:
       - db
 
-volumes:
-  postgresql-data:
-    driver: local
 

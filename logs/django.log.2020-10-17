@@ -1,0 +1,113 @@
+2020-10-17 01:15:18,426	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 01:31:47,087	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 02:14:06,074	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 02:33:37,303	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 02:35:43,354	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 02:35:50,252	[WARNING]	/usr/local/lib/python3.8/site-packages/django/utils/log.py(Line:224)	Not Found: /
+2020-10-17 02:35:50,253	[WARNING]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET / HTTP/1.1" 404 2025
+2020-10-17 02:35:50,336	[WARNING]	/usr/local/lib/python3.8/site-packages/django/utils/log.py(Line:224)	Not Found: /favicon.ico
+2020-10-17 02:35:50,337	[WARNING]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /favicon.ico HTTP/1.1" 404 2076
+2020-10-17 02:35:57,684	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech HTTP/1.1" 301 0
+2020-10-17 02:35:57,721	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 02:35:57,778	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/css/my.css HTTP/1.1" 200 209
+2020-10-17 02:35:57,783	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/demo/demo.css HTTP/1.1" 200 14424
+2020-10-17 02:35:57,793	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/js/core/popper.min.js HTTP/1.1" 200 33477
+2020-10-17 02:35:57,816	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/js/core/bootstrap-material-design.min.js HTTP/1.1" 200 76652
+2020-10-17 02:35:57,823	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/js/my/get_calculate.js HTTP/1.1" 200 479
+2020-10-17 02:35:57,827	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/js/my/get_model.js HTTP/1.1" 200 436
+2020-10-17 02:35:57,832	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/js/plugins/moment.min.js HTTP/1.1" 200 81780
+2020-10-17 02:35:57,834	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/js/core/jquery.min.js HTTP/1.1" 200 145741
+2020-10-17 02:35:57,847	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/css/material-kit.css HTTP/1.1" 200 406031
+2020-10-17 02:35:57,916	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/js/plugins/bootstrap-datetimepicker.js HTTP/1.1" 200 53379
+2020-10-17 02:35:57,919	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/js/material-kit.js HTTP/1.1" 200 7521
+2020-10-17 02:35:57,922	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/js/plugins/nouislider.min.js HTTP/1.1" 200 23883
+2020-10-17 02:35:58,030	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/img/profile_city.jpg HTTP/1.1" 200 646615
+2020-10-17 02:35:58,240	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/img/favicon.png HTTP/1.1" 200 2761
+2020-10-17 02:36:02,551	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 02:36:07,746	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /admin HTTP/1.1" 301 0
+2020-10-17 02:36:07,763	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /admin/ HTTP/1.1" 302 0
+2020-10-17 02:36:07,856	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /admin/login/?next=/admin/ HTTP/1.1" 200 2194
+2020-10-17 02:36:07,892	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 1360
+2020-10-17 02:36:07,893	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 1942
+2020-10-17 02:36:07,895	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/css/login.css HTTP/1.1" 200 1185
+2020-10-17 02:36:07,903	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/css/responsive.css HTTP/1.1" 200 18617
+2020-10-17 02:36:07,904	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/css/base.css HTTP/1.1" 200 16307
+2020-10-17 02:36:07,911	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2020-10-17 02:36:08,009	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 85876
+2020-10-17 02:36:08,021	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 85692
+2020-10-17 02:44:59,857	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/help HTTP/1.1" 200 7389
+2020-10-17 02:45:02,258	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/select_data HTTP/1.1" 200 7256
+2020-10-17 02:45:02,321	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/img/exam_img.jpg HTTP/1.1" 200 88745
+2020-10-17 02:45:10,430	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"POST /tech/select_data HTTP/1.1" 302 0
+2020-10-17 02:45:10,440	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/calculation HTTP/1.1" 302 0
+2020-10-17 02:45:10,497	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/empty HTTP/1.1" 200 6425
+2020-10-17 02:45:12,024	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/select_data HTTP/1.1" 200 7256
+2020-10-17 02:45:12,489	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/select_model HTTP/1.1" 200 6838
+2020-10-17 02:45:14,710	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 02:45:16,093	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/calculation HTTP/1.1" 302 0
+2020-10-17 02:45:16,110	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/empty HTTP/1.1" 200 6425
+2020-10-17 02:45:26,264	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/help HTTP/1.1" 200 7389
+2020-10-17 02:45:29,314	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/help HTTP/1.1" 200 7389
+2020-10-17 02:45:30,336	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 06:07:50,562	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:236)	/code/MLkit/settings.py changed, reloading.
+2020-10-17 06:07:51,279	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 06:10:18,306	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 06:10:57,420	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:236)	/code/MLkit/settings.py changed, reloading.
+2020-10-17 06:10:57,976	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 06:17:32,127	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 06:17:41,721	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:236)	/code/MLkit/settings.py changed, reloading.
+2020-10-17 06:17:42,264	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 06:18:52,755	[WARNING]	/usr/local/lib/python3.8/site-packages/django/utils/log.py(Line:224)	Not Found: /
+2020-10-17 06:18:52,757	[WARNING]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET / HTTP/1.1" 404 2025
+2020-10-17 06:18:58,961	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /admin/ HTTP/1.1" 302 0
+2020-10-17 06:18:58,991	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /admin/login/?next=/admin/ HTTP/1.1" 200 2194
+2020-10-17 06:18:59,016	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/css/base.css HTTP/1.1" 304 0
+2020-10-17 06:18:59,017	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+2020-10-17 06:18:59,026	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+2020-10-17 06:18:59,026	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+2020-10-17 06:18:59,026	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/css/login.css HTTP/1.1" 304 0
+2020-10-17 06:18:59,070	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+2020-10-17 06:18:59,143	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 304 0
+2020-10-17 06:18:59,144	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 304 0
+2020-10-17 06:19:04,839	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"POST /admin/login/?next=/admin/ HTTP/1.1" 200 2355
+2020-10-17 06:19:04,873	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 86184
+2020-10-17 06:19:13,573	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /admin/login/?next=/admin/ HTTP/1.1" 200 2194
+2020-10-17 06:19:19,027	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 06:19:23,170	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 06:19:25,023	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/calculation HTTP/1.1" 302 0
+2020-10-17 06:19:25,039	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/empty HTTP/1.1" 200 6425
+2020-10-17 08:01:05,348	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 08:01:18,762	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/empty HTTP/1.1" 200 6425
+2020-10-17 08:01:18,875	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/img/favicon.png HTTP/1.1" 200 2761
+2020-10-17 08:01:20,788	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/help HTTP/1.1" 200 7389
+2020-10-17 08:01:21,572	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/select_model HTTP/1.1" 200 6838
+2020-10-17 08:01:23,644	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 08:06:51,502	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 08:07:00,288	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 08:07:00,389	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/img/favicon.png HTTP/1.1" 200 2761
+2020-10-17 08:07:03,907	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 08:07:03,977	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/img/favicon.png HTTP/1.1" 200 2761
+2020-10-17 08:07:10,197	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 08:07:12,998	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 08:07:13,751	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/select_model HTTP/1.1" 200 6838
+2020-10-17 08:07:38,485	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 08:11:33,616	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 08:11:52,224	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 08:11:52,297	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/img/favicon.png HTTP/1.1" 200 2761
+2020-10-17 08:11:57,326	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 08:11:57,386	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/img/favicon.png HTTP/1.1" 200 2761
+2020-10-17 08:12:01,939	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/select_data HTTP/1.1" 200 7256
+2020-10-17 08:12:03,436	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/select_model HTTP/1.1" 200 6838
+2020-10-17 08:12:09,212	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 08:17:38,113	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 08:18:38,925	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 08:19:18,042	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:236)	/code/MLkit/settings.py changed, reloading.
+2020-10-17 08:19:18,609	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-17 08:19:30,643	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 08:19:30,772	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/img/favicon.png HTTP/1.1" 200 2761
+2020-10-17 08:19:32,235	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838
+2020-10-17 08:19:33,817	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/select_model HTTP/1.1" 200 6838
+2020-10-17 08:19:36,590	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/select_data HTTP/1.1" 200 7256
+2020-10-17 08:19:37,510	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/help HTTP/1.1" 200 7389
+2020-10-17 08:19:41,040	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/help HTTP/1.1" 200 7389
+2020-10-17 08:19:41,665	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 6838

@@ -7,3 +7,4 @@ RUN python -m pip install --upgrade setuptools pip wheel
 RUN pip install -r requirements.txt
 ADD . /code/
 COPY ./MLkit ./code
+WORKDIR /code/
