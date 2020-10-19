@@ -8,3 +8,5 @@
 2020/10/5 NNを使えるようにした
 
 2020/10/13 テストを書き、github actionでpush毎に実行されるようにした
+
+2020/10/19 docker image にする用のdocker file を置いた
