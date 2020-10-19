@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  db:
+    container_name: django-test-db
+    image: postgres
+    ports: 
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=mmlcalculator
+      - POSTGRES_USER=masamune
+      - POSTGRES_PASSWORD=kenji0121
+      - POSTGRES_HOST=localhost
+      #docker.for.win.localhost
+    
+
+  web:
+    build: .
+    command: python3 manage.py makemigrations
+    command: python3 manage.py migrate
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  postgresql-data:
+    driver: local
+

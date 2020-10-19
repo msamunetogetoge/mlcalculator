@@ -26,7 +26,7 @@ SECRET_KEY = 'yp04&3m-0wrf&8j_=g^0=1om=b##x^5g60h8j%uq+fn$93c=5%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'mmlcalculator',
         'USER': 'masamune',
         'PASSWORD': 'kenji0121',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
