@@ -19,14 +19,8 @@ services:
   web:
     container_name: mlkit
     build: .
-    command: python manage.py shell
-    command: from tech.models import MlModel
-    command: MlModel(mdl="回帰分析", code="Regression").save()
-    command: MlModel(mdl="ロジスティック回帰", code="Logistic_classification").save()
-    command: MlModel(mdl="NN回帰",code="NN_regression").save()
-    command: MlModel(mdl="NN分類",code="NN_classification").save()
-    command: quit()
     command: python manage.py makemigrations
+    command: python dbinit.py
     command: python manage.py migrate
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
