@@ -19,10 +19,12 @@ services:
   web:
     container_name: mlkit
     build: .
-    command: python manage.py makemigrations
-    command: python manage.py migrate
-    command: python manage.py loaddata dbinit.json
-    command: python manage.py runserver 0.0.0.0:8000
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py loaddata dbinit.json && python manage.py runserver 0.0.0.0:8000"
+    #command: python manage.py migrate
+    #command: python manage.py loaddata dbinit.json
+    #command: python manage.py makemigrations
+    #command: python manage.py migrate
+    #command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
