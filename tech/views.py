@@ -110,7 +110,9 @@ def calculation(request):
                 else:
                     pass
             selected_mdl.learning()
-            return HttpResponseRedirect(reverse("result"),)
+            return render(request, "tech/get_result.html",{
+            "results": results.objects.last()
+        }) 
             
     else:
         return HttpResponseRedirect(reverse("empty"))
@@ -139,7 +141,9 @@ def get_result(request):
             return render(request, "tech/calculation.html")
         
     else:
-        return render(request, "tech/calculation.html")
+        return render(request, "tech/get_result.html",{
+            "results": results
+        })
 
 def help(request):
 

@@ -1,0 +1,34 @@
+[
+    {
+      "model": "tech.Mlmodel",
+      "pk": 1,
+      "fields": {
+        "mdl": "回帰分析",
+        "code":"Regression"
+      }
+    },
+    {
+        "model": "tech.Mlmodel",
+        "pk": 2,
+        "fields": {
+          "mdl": "ロジスティック回帰",
+          "code":"Logistic_classification"
+        }
+      },
+      {
+        "model": "tech.Mlmodel",
+        "pk": 3,
+        "fields": {
+          "mdl": "NN回帰",
+          "code":"NN_regression"
+        }
+      },
+      {
+        "model": "tech.Mlmodel",
+        "pk": 4,
+        "fields": {
+          "mdl": "NN分類",
+          "code":"NN_classification"
+        }
+      }
+  ]
