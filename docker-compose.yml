@@ -3,28 +3,24 @@ version: '3'
 services:
   db:
     container_name: django-test-db
-    image: postgres
+    image: postgres:alpine
     ports: 
       - "5432:5432"
     environment:
       - POSTGRES_DB=mmlcalculator
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      
-      #docker.for.win.localhost
+      - TZ=Asia/Tokyo
+
     
 
     
 
   web:
-    container_name: mlkit
+    #create from python:3.8-alpine
+    container_name: mlkit_slim
     build: .
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py loaddata dbinit.json && python manage.py runserver 0.0.0.0:8000"
-    #command: python manage.py migrate
-    #command: python manage.py loaddata dbinit.json
-    #command: python manage.py makemigrations
-    #command: python manage.py migrate
-    #command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:

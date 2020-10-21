@@ -1,8 +1,7 @@
-scikit-learn 
+numpy
 scipy 
-seaborn
+scikit-learn 
 Sphinx 
 pandas
-numpy
 django == 3.1.1
 psycopg2-binary
