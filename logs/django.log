@@ -622,3 +622,353 @@ LINE 1: ... "tech_mlmodel"."mdl", "tech_mlmodel"."code" FROM "tech_mlmo...
 2020-10-20 02:48:47,613	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/calculation HTTP/1.1" 200 7226
 2020-10-20 02:48:48,802	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"POST /tech/calculation HTTP/1.1" 200 7435
 2020-10-20 02:48:54,271	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/? HTTP/1.1" 200 7148
+2020-10-20 05:53:46,484	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-20 05:54:00,082	[ERROR]	/usr/local/lib/python3.8/site-packages/django/utils/log.py(Line:224)	Internal Server Error: /tech/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UndefinedTable: relation "tech_mlmodel" does not exist
+LINE 1: ... "tech_mlmodel"."mdl", "tech_mlmodel"."code" FROM "tech_mlmo...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/tech/views.py", line 24, in index
+    return render(request, "tech/index.html",{
+  File "/usr/local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/defaulttags.py", line 168, in render
+    len_values = len(values)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 269, in __len__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1303, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1156, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.ProgrammingError: relation "tech_mlmodel" does not exist
+LINE 1: ... "tech_mlmodel"."mdl", "tech_mlmodel"."code" FROM "tech_mlmo...
+                                                             ^
+
+2020-10-20 05:54:00,106	[ERROR]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/? HTTP/1.1" 500 192365
+2020-10-20 05:54:36,527	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-20 05:54:59,237	[ERROR]	/usr/local/lib/python3.8/site-packages/django/utils/log.py(Line:224)	Internal Server Error: /tech/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UndefinedTable: relation "tech_mlmodel" does not exist
+LINE 1: ... "tech_mlmodel"."mdl", "tech_mlmodel"."code" FROM "tech_mlmo...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/tech/views.py", line 24, in index
+    return render(request, "tech/index.html",{
+  File "/usr/local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/defaulttags.py", line 168, in render
+    len_values = len(values)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 269, in __len__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1303, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1156, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.ProgrammingError: relation "tech_mlmodel" does not exist
+LINE 1: ... "tech_mlmodel"."mdl", "tech_mlmodel"."code" FROM "tech_mlmo...
+                                                             ^
+
+2020-10-20 05:54:59,244	[ERROR]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 500 192061
+2020-10-20 05:55:02,114	[ERROR]	/usr/local/lib/python3.8/site-packages/django/utils/log.py(Line:224)	Internal Server Error: /tech/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UndefinedTable: relation "tech_mlmodel" does not exist
+LINE 1: ... "tech_mlmodel"."mdl", "tech_mlmodel"."code" FROM "tech_mlmo...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/tech/views.py", line 24, in index
+    return render(request, "tech/index.html",{
+  File "/usr/local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/defaulttags.py", line 168, in render
+    len_values = len(values)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 269, in __len__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1303, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1156, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.ProgrammingError: relation "tech_mlmodel" does not exist
+LINE 1: ... "tech_mlmodel"."mdl", "tech_mlmodel"."code" FROM "tech_mlmo...
+                                                             ^
+
+2020-10-20 05:55:02,118	[ERROR]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 500 192198
+2020-10-20 05:55:40,989	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-20 05:56:17,143	[ERROR]	/usr/local/lib/python3.8/site-packages/django/utils/log.py(Line:224)	Internal Server Error: /tech/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UndefinedTable: relation "tech_mlmodel" does not exist
+LINE 1: ... "tech_mlmodel"."mdl", "tech_mlmodel"."code" FROM "tech_mlmo...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/tech/views.py", line 24, in index
+    return render(request, "tech/index.html",{
+  File "/usr/local/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.8/site-packages/django/template/defaulttags.py", line 168, in render
+    len_values = len(values)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 269, in __len__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1303, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1156, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.ProgrammingError: relation "tech_mlmodel" does not exist
+LINE 1: ... "tech_mlmodel"."mdl", "tech_mlmodel"."code" FROM "tech_mlmo...
+                                                             ^
+
+2020-10-20 05:56:17,151	[ERROR]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 500 192198
+2020-10-20 06:04:56,439	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-20 06:05:06,432	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/ HTTP/1.1" 200 7148
+2020-10-20 06:05:06,557	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/img/favicon.png HTTP/1.1" 200 2761
+2020-10-20 07:04:46,042	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-20 07:05:40,385	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-20 07:12:21,169	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-20 09:04:42,367	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-20 09:05:28,103	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-21 02:03:55,185	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-21 02:05:45,040	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-21 02:10:56,142	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"POST /tech/select_model HTTP/1.1" 302 0
+2020-10-21 02:10:56,175	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/select_data HTTP/1.1" 200 7256
+2020-10-21 02:10:56,209	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/css/my.css HTTP/1.1" 304 0
+2020-10-21 02:10:56,210	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/img/exam_img.jpg HTTP/1.1" 304 0
+2020-10-21 02:10:56,227	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/js/my/get_calculate.js HTTP/1.1" 304 0
+2020-10-21 02:10:56,227	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /static/js/my/get_model.js HTTP/1.1" 304 0
+2020-10-21 02:11:06,291	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"POST /tech/select_data HTTP/1.1" 302 0
+2020-10-21 02:11:06,313	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/calculation HTTP/1.1" 200 7210
+2020-10-21 02:11:09,994	[ERROR]	/usr/local/lib/python3.8/site-packages/django/utils/log.py(Line:224)	Internal Server Error: /tech/calculation
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/code/tech/views.py", line 95, in calculation
+    selected_mdl = eval(mlmodel)(data=selectedData.objects.last().data )
+  File "/code/tech/calculations.py", line 29, in __init__
+    data              = pd.read_csv(data).dropna()
+  File "/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py", line 686, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py", line 452, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py", line 946, in __init__
+    self._make_engine(self.engine)
+  File "/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py", line 1178, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/usr/local/lib/python3.8/site-packages/pandas/io/parsers.py", line 2008, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 537, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 740, in pandas._libs.parsers.TextReader._get_header
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2020-10-21 02:11:10,007	[ERROR]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"POST /tech/calculation HTTP/1.1" 500 127049
+2020-10-21 02:11:13,016	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/select_data HTTP/1.1" 200 7256
+2020-10-21 02:11:32,021	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"POST /tech/select_data HTTP/1.1" 302 0
+2020-10-21 02:11:32,052	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/calculation HTTP/1.1" 200 7210
+2020-10-21 02:11:33,460	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"POST /tech/calculation HTTP/1.1" 200 7437
+2020-10-21 02:11:39,901	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"POST /tech/get_result HTTP/1.1" 200 6384
+2020-10-21 02:11:43,321	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/? HTTP/1.1" 200 7148
+2020-10-21 02:11:45,310	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/calculation HTTP/1.1" 200 7210
+2020-10-21 02:11:46,621	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/select_data HTTP/1.1" 200 7256
+2020-10-21 02:11:47,055	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/select_model HTTP/1.1" 200 7148
+2020-10-21 02:11:47,493	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/help HTTP/1.1" 200 7719
+2020-10-21 02:11:49,864	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"POST /tech/help HTTP/1.1" 302 0
+2020-10-21 03:52:59,613	[INFO]	/usr/local/lib/python3.8/site-packages/django/utils/autoreload.py(Line:612)	Watching for file changes with StatReloader
+2020-10-21 04:16:35,107	[INFO]	/usr/local/lib/python3.8/site-packages/django/core/servers/basehttp.py(Line:157)	"GET /tech/help HTTP/1.1" 200 7719
