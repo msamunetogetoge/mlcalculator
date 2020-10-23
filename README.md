@@ -10,3 +10,5 @@
 2020/10/13 テストを書き、github actionでpush毎に実行されるようにした
 
 2020/10/19 docker image にする用のdocker file を置いた
+
+2020/10/23 nginx + gunicorn で動くようにdockerfile などを編集した
