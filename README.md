@@ -1,4 +1,8 @@
-# MLkit
+# 使い方
+docker build -t gunicorn:latest .
+docker-compose up -d
+
+# 更新履歴
 2020/9/13 ver0.1 回帰分析だけ出来るバージョン。
 
 2020/9/18 ver0.2 ロジスティック回帰も出来るバージョンヘルプページも追加された
