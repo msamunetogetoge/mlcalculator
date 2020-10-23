@@ -4,4 +4,5 @@ scikit-learn
 Sphinx 
 pandas
 django == 3.1.1
+gunicorn==20.0.4
 psycopg2-binary

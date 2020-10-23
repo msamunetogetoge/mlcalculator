@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    container_name: django-test-db
+    container_name: db
     image: postgres:alpine
     ports: 
       - "5432:5432"
@@ -10,22 +10,35 @@ services:
       - POSTGRES_DB=mmlcalculator
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - TZ=Asia/Tokyo
 
+  gunicorn:
+    image: gunicorn:latest
+    container_name: gunicorn_django
+    command: >
+        bash -c "./dbinit.sh &&
+        python manage.py collectstatic --noinput &&
+        gunicorn MLkit.wsgi --bind=unix:/var/run/gunicorn/gunicorn.sock"
     
-
-    
-
-  web:
-    #create from python:3.8-alpine
-    container_name: mlkit_slim
-    build: .
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py loaddata dbinit.json && python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - .:/code
-    ports:
-      - "8000:8000"
+      - .:/usr/src/app/
+      - gunicorn:/var/run/gunicorn
+    
+    
+  
+  nginx:
+    image: nginx:1.17.7
+    container_name: nginx
     depends_on:
+      - gunicorn
       - db
+    ports:
+      - "80:80"
+    volumes:
+      - ./gunicorn.conf:/etc/nginx/conf.d/default.conf
+      - gunicorn:/var/run/gunicorn
+      - ./static:/static
+volumes:
+  gunicorn:
+    driver: local
 
 

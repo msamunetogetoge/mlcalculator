@@ -1,2 +1,5 @@
 __pycache__
 .vscode
+MLkit/__pycache__
+tech/__pycache__
+logs/
