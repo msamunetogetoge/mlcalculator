@@ -12,6 +12,7 @@ services:
       - POSTGRES_PASSWORD=postgres
 
   gunicorn:
+    build : .
     image: gunicorn:latest
     container_name: gunicorn_django
     command: >
