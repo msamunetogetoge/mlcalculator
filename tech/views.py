@@ -58,12 +58,19 @@ def make_NN(request):
 
 
 def select_data(request):
+    """
+    POSTされたデータがcsvか判定し、calculation に渡す
+    """
     if request.method =="POST":
         data          = UploadFileForm(request.POST, request.FILES)
         if data.is_valid():
             #data is save to /media
             data.save()
-        return HttpResponseRedirect(reverse("calculation"))
+            return HttpResponseRedirect(reverse("calculation"))
+        else :
+            return render(request, "tech/error.html",{
+                "msg":"使えるファイルはcsvファイルだけです。"
+            })
     else:
         dataform      = UploadFileForm()
         return render(request, "tech/select_data.html",{
@@ -146,7 +153,6 @@ def get_result(request):
         })
 
 def help(request):
-
     """
     help ページからモデルが選ばれていたら、そのモデルの説明ページへ飛ばす(ブログ)
     """
