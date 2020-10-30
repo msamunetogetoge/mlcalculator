@@ -20,6 +20,11 @@ MML Calculator
     <button type="submit"class="btn btn-primary"> 選択</button>
     </div>
 </form>
+{% if msg %}
+    {% for error in msg %}
+        {{error}}
+    {% endfor %}
+{% endif %}
 <p class="help-block">※下の画像のようなcsvファイルにのみ対応しています</p>
 <figure>
     <div class="thumbnail">

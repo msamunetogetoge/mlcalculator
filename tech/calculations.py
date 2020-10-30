@@ -51,7 +51,7 @@ class Regression():
     
     def get_results(self):
         """
-        train/test の目印、予測値、元データのように列名を指定して、media root に結果を保存する
+        train/test の目印、予測値、元データのように列名を指定して、結果を保存する
         """
         Xs               = pd.concat([self.X_train, self.X_test], axis=0, ignore_index=True)
         ys               = pd.DataFrame(data = np.append(self.y_train, self.y_test), columns = [self.columns[0]])

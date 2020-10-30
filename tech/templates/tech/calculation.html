@@ -1,4 +1,5 @@
 {% extends "tech/layout.html" %}
+{%  load filename %}
 
 {% block landing-page-title %}
 MML Calculator
@@ -25,7 +26,7 @@ MML Calculator
 {% block contents %}
 <div>
 <ul> 
-    <li>使うデータ: {{data.title }}</li>
+    <li>使うデータ: {{data | getfilename  }}</li>
     <li>使う手法: {{model.mdl }}</li>
 </ul>
 </div>

@@ -62,17 +62,19 @@ def select_data(request):
     POSTされたデータがcsvか判定し、calculation に渡す
     """
     if request.method =="POST":
-        data          = UploadFileForm(request.POST, request.FILES)
-        if data.is_valid():
+        form          = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
             #data is save to /media
-            data.save()
+            form.save()
             return HttpResponseRedirect(reverse("calculation"))
-        else :
-            return render(request, "tech/error.html",{
-                "msg":"使えるファイルはcsvファイルだけです。"
+        else:   
+            dataform      = UploadFileForm        
+            return render(request, "tech/select_data.html",{
+                "msg" : form.errors["data"],
+                "form": dataform
             })
     else:
-        dataform      = UploadFileForm()
+        dataform      = UploadFileForm
         return render(request, "tech/select_data.html",{
                 "form":dataform,
 

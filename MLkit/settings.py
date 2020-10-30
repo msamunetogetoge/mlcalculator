@@ -28,7 +28,7 @@ SECRET_KEY = 'yp04&3m-0wrf&8j_=g^0=1om=b##x^5g60h8j%uq+fn$93c=5%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["gunicorn-django"]
 
 
 

@@ -29,18 +29,17 @@ class NN_layers(models.Model):
 
 
 class selectedData(models.Model):
-    title       = models.CharField('title', max_length=64)
     data        = models.FileField(upload_to="media",null=True, 
-                  validators=[FileExtensionValidator(".csv", "csvファイル以外は使えません。すみません。")])
+                  validators=[FileExtensionValidator(allowed_extensions=["csv","Microsoft Excel CSV ファイル"],message="csvファイルしか使えません。" )])
 
     def __str__(self):
-        return self.title
+        return str(self.data)
 
 class UploadFileForm(ModelForm):
 
     class Meta:
         model    = selectedData 
-        fields   = ('title','data' )
+        fields   = '__all__'
 
         
 
