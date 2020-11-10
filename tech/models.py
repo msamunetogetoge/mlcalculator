@@ -1,6 +1,9 @@
+import os
 from django.db import models
+from django import forms
 from django.forms import ModelForm
-from django.core.validators import MaxValueValidator, MinValueValidator 
+
+from django.core.validators import FileExtensionValidator
 
 # Create your models here.
 
@@ -24,20 +27,21 @@ class NN_layers(models.Model):
     def __str__(self):
         return f"Layer1: {self.layer1}, Layer2:{self.layer2}"
 
-    
 
 class selectedData(models.Model):
-    title       = models.CharField('title', max_length=64)
-    data        = models.FileField(upload_to="media",null=True)
+    data        = models.FileField(upload_to="media",null=True, 
+                  validators=[FileExtensionValidator(allowed_extensions=["csv","Microsoft Excel CSV ファイル"],message="csvファイルしか使えません。" )])
 
     def __str__(self):
-        return self.title
+        return str(self.data)
 
 class UploadFileForm(ModelForm):
 
     class Meta:
         model    = selectedData 
-        fields   = ('title','data' )
+        fields   = '__all__'
+
+        
 
 class results(models.Model):
     title        = models.CharField(max_length=64)
