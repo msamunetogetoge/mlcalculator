@@ -1,5 +1,4 @@
 # 使い方
-docker build -t gunicorn:latest .
 docker-compose up -d
 
 # 更新履歴
