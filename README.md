@@ -1,5 +1,9 @@
 # 使い方
-docker-compose up -d
+docker-compose up -d　
+
+http://localhost にアクセスすると使える
+
+ポートの80と8000が使用中でないことが必要
 
 # 更新履歴
 2020/9/13 ver0.1 回帰分析だけ出来るバージョン。
