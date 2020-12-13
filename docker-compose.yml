@@ -16,8 +16,7 @@ services:
     image: gunicorn:latest
     container_name: gunicorn_django
     command: >
-        bash -c " chmod + ./dbinit.sh &&
-        ./dbinit.sh &&
+        bash -c " ./dbinit.sh &&
         python manage.py collectstatic --noinput &&
         gunicorn MLkit.wsgi --bind=unix:/var/run/gunicorn/gunicorn.sock"
     
