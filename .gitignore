@@ -4,3 +4,4 @@ MLkit/__pycache__
 tech/__pycache__
 tech/migrations/
 media/
+.devcontainer/
