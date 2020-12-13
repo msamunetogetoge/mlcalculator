@@ -1,7 +1,8 @@
 # 使い方
-docker-compose up -d　
-
-http://localhost にアクセスすると使える
+cd mlcalculator  
+chmod +x dbinit.sh  
+docker-compose up -d  
+でコンテナ起動後、http://localhost にアクセスすると使える  
 
 ポートの80と8000が使用中でないことが必要
 
