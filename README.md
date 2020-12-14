@@ -34,7 +34,7 @@ chmod +x dbinit.sh
 データはcsv形式のみ。  
 以下の画像のように、1列目に予測したい量、2列目以降に数字の特徴量を並べた形にのみ対応している。  
 `temp_hmdt.csv`というファイルがあるので、それで試せる。  
-![sampledata](static\img\exam_img.jpg)  
+![sampledata](static/img/exam_img.jpg)  
 ## 3 使い方
 ***
 コンテナを起動すれば使える。(docker, docker-composeがインストールされている必要がある。)
@@ -55,21 +55,21 @@ docker-compose up -d
 |分類|ロジスティック回帰, ニューラルネットワーク|
 
 モデルを選んだら送信ボタンをクリックする。  
-![select model](static\img\examples\select_model.jpg)   
+![select model](static/img/examples/select_model.jpg)   
 ### 3.2. 使用するデータを選択する
 使用するデータをアップロードする。  
 アップロードされたデータはgit clone で作られたディレクトリ内、`mlcalculator/media`に保存されています。
 データを選択し、選択ボタンをクリックする。   
 ニューラルネットワークの場合は、層の深さは固定で、ノードの数を手動で決める。 
-![select data](static\img\examples\select_data.jpg)  
+![select data](static/img/examples/select_data.jpg)  
 ### 3.3. 計算の条件を確認する
 計算の条件が望みどおりになっていたら、計算ボタンを押す。
-![calculate](static\img\examples\calculate.jpg)  
+![calculate](static/img/examples/calculate.jpg)  
 ### 3.4. 結果を確認する
 結果を確認する。  
 使った損失関数や、その値、簡単な説明が表示される。  
 もしも必要なら、結果のダウンロードボタンをクリックして予測結果が入ったcsvファイルをダウンロードできる。
-![calculate](static\img\examples\result.jpg)  
+![calculate](static/img/examples/result.jpg)  
 # 更新履歴
 2020/9/13 回帰分析だけ出来るバージョンを公開  
 2020/9/18 ロジスティック回帰も出来るバージョンを公開。ヘルプページも追加。    
