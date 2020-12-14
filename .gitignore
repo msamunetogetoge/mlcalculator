@@ -5,3 +5,5 @@ tech/__pycache__
 tech/migrations/
 media/
 .devcontainer/
+logs/
+django.logs/
